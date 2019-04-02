@@ -1,15 +1,17 @@
-// HTML structure for a contact entry
+// The contact component that displays a a contact's name, phone number, and address.
+export default {
+    buildContact(contact) {
+        const contactArticle = document.createElement("article")
 
-const contactElement = {
-    makeContactComponent: (contactEntry) => {
-        return `
-        <section class ="singleContact">
-        <p class="entryTitle">Contact Name: ${contactEntry.name}</p>
-        <p class="entryTitle">Phone Number: ${contactEntry.phoneNumber}</p>
-        <p class="entryTitle">Address: ${contactEntry.address}</p>
-        </section>
-        `
+        const contactHeader = contactArticle.appendChild(document.createElement("h3"))
+        contactHeader.textContent = contact.name
+
+        const contactPhoneNumberParagraph = contactArticle.appendChild(document.createElement("p"))
+        contactPhoneNumberParagraph.textContent = contact.phoneNumber
+
+        const contactAddressParagraph = contactArticle.appendChild(document.createElement("p"))
+        contactAddressParagraph.textContent = contact.address
+
+        return contactArticle
     }
-    }
-    
-    export default contactElement
+}
