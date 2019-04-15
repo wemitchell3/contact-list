@@ -1,8 +1,8 @@
-// The contactForm component that listens for when the submit button is pressed. When it is triggered, a new contact should be POSTed to the API. It should import the contactCollection component.
-import contactCollection from "./contactCollection"
+import eventHandler from "./eventHandler"
 
+// The contactForm component that listens for when the submit button is pressed. When it is triggered, a new contact should be POSTed to the API. It should import the contactCollection component.
 const contactForm = {
-    buildContactForm() {
+    buildContactForm () {
         const contactNameLabel = document.createElement("label")
         contactNameLabel.textContent = "Contact Name: "
 
@@ -23,7 +23,7 @@ const contactForm = {
 
         const addContactButton = document.createElement("button")
         addContactButton.textContent = "Add Contact"
-        addContactButton.addEventListener("click", this.handleAddContact)
+        addContactButton.addEventListener("click", eventHandler.handleAddContact)
 
         const contactFormSection = document.createElement("section")
         contactFormSection.appendChild(contactNameLabel)
@@ -36,21 +36,7 @@ const contactForm = {
 
         const displayContainer = document.querySelector("#display-container")
         displayContainer.appendChild(contactFormSection)
-    },
-    handleAddContact() {
-        const contactName = document.querySelector("#contact-name-input").value
-        const contactPhoneNumber = document.querySelector("#contact-phone-number-input").value
-        const contactAddress = document.querySelector("#contact-address-input").value
-
-        console.log("Form values", contactName, contactPhoneNumber, contactAddress)
-
-        const newContact = {
-            name: contactName,
-            phoneNumber: contactPhoneNumber,
-            address: contactAddress
-        }
-        contactCollection.postNewContact(newContact);
-    }
+}
 }
 
-export default contactForm;
+export default contactForm
